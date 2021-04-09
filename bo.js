@@ -3,7 +3,8 @@ bot()
 function bot(){
   let token = "1748921180:AAH8FeyPSn-vU8PWxWpZ3WouWcLgmvEhpXQ"
   let website = "https://api.telegram.org/bot"
-  let getMe = [website+token+"/getupdates"]
+  let getMe = [website+token+"
+"]
  var str = getMe.toString()
  
  
@@ -23,8 +24,8 @@ fetch(str)
        {name:"welcome"},
        ]
        let random = Math.floor(Math.random()*hel.length)
-      let text = obj["result"][len]["message"]["text"]
-     let chatId = obj["result"][len]["message"]["chat"]["id"]
+      let text = obj["message"]["text"]
+     let chatId = obj["message"]["chat"]["id"]
 
     
      if (text == "/start"){
