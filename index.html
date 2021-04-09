@@ -1,2 +1,70 @@
 
 <p>hay</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+</head>
+
+<body>
+<script type="text/javascript" charset="utf-8">
+
+
+
+bot()
+
+function bot(){
+  let token = "1786057220:AAF0O8JWrnrUKbXY-SFHuT3_ZMl0SdR6t8k"
+  let website = "https://api.telegram.org/bot"
+  let getMe = [website+token+"/getupdates"]
+ var str = getMe.toString()
+ 
+ 
+ 
+fetch(str)
+    .then(response => response.text())
+    .then(data =>   {
+      var obj= JSON.parse(data)
+      let len = obj["result"].length-1
+    
+     
+      let text = obj["result"][len]["message"]["text"]
+     let chatId = obj["result"][len]["message"]["chat"]["id"]
+     switch(text){
+       case "/start":
+         sendMessage(chatId , "welcome to geys")
+     }
+     
+     function sendMessage(chatId,message){
+       let url= `https://api.telegram.org/bot1786057220:AAF0O8JWrnrUKbXY-SFHuT3_ZMl0SdR6t8k/sendMessage?chat_id=${chatId}&text=${message}`
+            fetch(url)
+            .then(response => response.text())
+            .then(data => {
+              var obj= JSON.parse(data)
+              result= obj["result"]["text"]
+              document.write(result)
+              
+            })
+            }
+
+        
+    
+    })
+}
+    /*
+      sendMessage(chatId,text)
+      function sendMessage(chatId , message){
+        let url = getMe+"/sendMessage?chat_id"+chatId+"&text="+message
+      fetch (url)
+      .then(response => response.text())
+      .then(item => console.log(item))
+
+      }
+    */
+</script>
+</body>
+
+</html>
